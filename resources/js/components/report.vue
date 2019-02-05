@@ -70,14 +70,30 @@ export default {
       }
     },
 
-    age(date) {
+   age(date) {
       var age = new Date(date);
       var now = new Date();
 
       var ageYear = age.getFullYear();
       var nowYear = now.getFullYear();
 
-      return nowYear - ageYear;
+      var ageMonth = age.getMonth();
+      var nowMonth = now.getMonth();
+
+      var ageDay = age.getDay();
+      var nowDay = now.getDay();
+
+      if (nowYear - ageYear >= 18) {
+            return nowYear - ageYear;
+      } else if (nowYear - ageYear == 17) {
+        if (nowMonth > ageYear) {
+            return nowYear - ageYear;
+        } else if (nowMonth == ageMonth) {
+          if (nowDay >= ageYear) {
+            return nowYear - ageYear;
+          } 
+        }
+      }
     },
     destroy(asistent, index) {
       this.ClickEliminated = true;
